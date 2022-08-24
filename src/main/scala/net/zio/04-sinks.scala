@@ -97,7 +97,7 @@ object Operators extends ZIOSpecDefault {
 
         for {
           value <- stream.runCount
-        } yield assertTrue(value == 4)
+        } yield assertTrue(value.toInt == 4)
       } @@ ignore +
         /**
          * EXERCISE

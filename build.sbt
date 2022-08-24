@@ -5,7 +5,7 @@ lazy val root = project
   .settings(
     name := "advanced-zio",
     organization := "net.degoes",
-    scalaVersion := "2.13.8"
+    scalaVersion := "3.1.3"
   )
 
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")

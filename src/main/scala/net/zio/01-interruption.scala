@@ -155,7 +155,7 @@ object Backpressuring extends ZIOSpecDefault {
           _     <- left.zipPar(right).ignore
           end   <- Clock.instant
           delta = end.getEpochSecond() - start.getEpochSecond()
-        } yield assertTrue(delta < 1))
+        } yield assertTrue(delta.toInt < 1))
       } @@ ignore +
         /**
          * EXERCISE

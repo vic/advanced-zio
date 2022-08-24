@@ -130,11 +130,12 @@ object Operators extends ZIOSpecDefault {
         import ZPipeline.utf8Decode
 
         def utf8Encode: ZPipeline[Any, Nothing, String, Byte] =
-          ZPipeline
-            .collect[String, Chunk[Byte]] {
-              case string =>
-                Chunk.fromArray(string.getBytes(StandardCharsets.UTF_8))
-            } >>> ZPipeline.mapChunks(_.flatten)
+          ???
+          // ZPipeline
+          //   .collect[String, Chunk[Byte]] {
+          //     case string =>
+          //       Chunk.fromArray(string.getBytes(StandardCharsets.UTF_8))
+          //   } >>> ZPipeline.mapChunks(_.flatten)
 
         def composed = utf8Encode >>> utf8Decode
 
