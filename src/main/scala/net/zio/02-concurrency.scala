@@ -47,10 +47,15 @@ object QueueBasics extends ZIOSpecDefault {
        */
       test("offer/take") {
         for {
+          queue <- Queue.bounded[Int](1)
+          offerFiber <- queue.offer(12).fork
           ref <- Ref.make(0)
+          takeFiber <- queue.take.flatMap(ref.set).fork
+          // Zip the two fibers and wait for them to finish
+          _ <- offerFiber.zip(takeFiber).join
           v   <- ref.get
         } yield assertTrue(v == 12)
-      } @@ ignore +
+      }  +
         /**
          * EXERCISE
          *
